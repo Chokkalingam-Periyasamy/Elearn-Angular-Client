@@ -1,0 +1,143 @@
+<head>
+              
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+</head>
+
+
+<div *ngIf="IsAuthendicated()">
+                <br>
+    <div class="offset-1">
+            
+            <button type="button" class="btn btn-outline-success btn-lg mt-5 ml-5" (click)="mycourse()">Mycourse</button>
+            &nbsp;<button id="b2" type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="ngOnInit()">Show course</button>
+          
+    
+    </div>       
+    
+
+<br><br>
+<div *ngIf="initflag">
+<div *ngFor="let item of course1" >
+   
+<div class="col-md-2 column productbox">
+  
+  <img class="br" src="{{item.image}}" class="img-responsive">
+  <br>
+    <div style="text-align: center;">
+    <b>{{item.coursename}}</b><br>
+      {{item.description}}
+      <br>
+      <p style="text-align: center;">₹<span>{{item.amount}}</span></p>
+      <!-- <button  (click)="EnrollCourse(item.courseid)" class="btn-dark">Enroll</button> -->
+      <a  (click)="pay(item.courseid)" class="btn btn-primary">Pay</a>
+      <br>
+    </div>
+ <br>
+    
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="mycflag">
+
+<div *ngFor="let item of mycourse2" >
+
+<div class="col-md-2 column productbox">
+  
+  <img class="br" src="{{item.image}}" class="img-responsive">
+  <br>
+  <div style="text-align: center;"><b>{{item.coursename}}</b><br>
+ <!-- {{item.description}} --><br>
+<a id="crt"  (click)="getModbyCId(item.courseid)" class="btn btn-success">View</a>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+ 
+<div *ngIf="flagviewMod">
+    <div *ngFor="let item of stumodarray">
+
+    <button class="accordion">{{item.modulename}}</button>
+    <div class="panel">
+        <div>
+        <br>
+        <iframe id="uif" src="https://www.youtube.com/embed/vsxYucdzimA" title="description">VS</iframe>
+        <br>
+            <!-- {{item.video}} -->
+        </div>
+    </div>
+
+
+    </div>
+</div>
+</div>
+
+
+
+<div class="container mt-5 p-3 rounded " *ngIf="payflag">
+  <div >
+  <div class="row no-gutters d-flex justify-content-center">
+      <div class="col-md-5">
+          <div class="payment-info">
+            <div id="get">
+              <b>{{getcourse.coursename}}</b><br>
+              <b>{{getcourse.description}}</b><br>
+              <b> ₹{{getcourse.amount}}</b><br>
+            </div>
+            <br>
+            <br>
+              <form>
+                  <div class="d-flex justify-content-between align-items-center">
+                      <span style="color:black;">Payment details</span>
+
+                  </div>
+                  <span class="type d-block mt-3 mb-1">Valid Cards</span>
+                  <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span>
+                  <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png" /></span>
+                  <div><label class="credit-card-label">Name on card</label><input type="text" class="form-control credit-inputs" placeholder="Customer Name" required></div>
+                  <div><label class="credit-card-label">Card number</label><input type="text" class="form-control credit-inputs" maxlength="16" placeholder="0000 0000 0000 0000" required></div>
+                  <div class="row">
+                      <div class="col-md-6"><label class="credit-card-label">Valid Through</label><input type="month" min="2000-01" max="2030-12" class="form-control credit-inputs"></div>
+                      <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="password" maxlength="3" minlength="3" class="form-control credit-inputs" required> </div>
+                  </div>
+                  <hr class="line">
+                  <div class="d-flex justify-content-between information"><span>Subtotal</span><span> ₹{{getcourse.amount}}</span></div>
+
+                  <div class="d-flex justify-content-between information">
+                      <span>Total(Incl. taxes)</span><span> ₹{{getcourse.amount}}</span>
+                  </div>
+
+                  <div>
+                      <a (click)="EnrollCourse(getcourse.courseid)" class="btn btn-success btn-block d-flex justify-content-between mt-3" >Pay <span> ₹{{getcourse.amount}}</span>  </a>
+
+                  </div>
+              </form>
+          </div>
+
+      </div>
+  </div>
+  </div>
+</div>

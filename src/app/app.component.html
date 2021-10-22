@@ -1,0 +1,71 @@
+<!-- <mat-toolbar>
+    <mat-toolbar-row class="justify-content-between" style="background-color:black;color: blanchedalmond;" >
+       <a routerLink = "home"  style="background-color:black;color: blanchedalmond;" mat-button-style="font-size:large;" style="background-color:black;color: blanchedalmond;" > <mat-icon >home5</mat-icon></a>
+        <a  routerLink = "home"  style="font-size: large;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" style=" color:blanchedalmond; text-decoration: none;">Learn2Code</a>
+         --> 
+
+        <!-- <div class="row mr-2 ml-auto">
+            <ul>
+                <li> -->
+                   <!-- <a routerLink = "/home" *ngIf="IsAuthendicated()" mat-button style="font-size: large;" (click) = "Logout()">Logout</a> -->
+                    <!-- <a  routerLink = "login"  mat-button style="font-size: large;">Login</a>
+                   
+                        <a routerLink = "login" mat-button style="font-size: large;">Logout</a>
+                  
+                     <a routerLink = "student"  mat-button style="font-size: large;">Register</a> -->
+                <!-- <a mat-button style="font-size:large" routerLink="course">Courses</a>
+&nbsp;<a mat-button style="font-size: large;" routerLink="staff">Staff</a>
+&nbsp;<a mat-button style="font-size: large;" routerLink="staffcourse">StaffCourse</a>
+&nbsp;<a mat-button style="font-size: large;" routerLink="module">Modules</a> -->
+                    <!-- <a class="btn"  style="font-size: large;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" style=" color:blanchedalmond; text-decoration: none;">{{display()}}</a>
+                </li>
+            </ul>
+        </div -->
+
+    <!-- </mat-toolbar-row>
+</mat-toolbar> -->
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 aa">
+        <div class="container">
+            <a class="navbar-brand">Learn2Code</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" routerLink = "home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" routerLink = "privacy">Privacy</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a  *ngIf="!l.loggedIn()" routerLink = "login" class="nav-link text-dark ">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  *ngIf="l.loggedIn()" (click)="course()" class="nav-link text-dark ">Courses</a>
+                    </li>
+                    
+
+                  
+                    
+
+
+                </ul>
+            </div>
+            <a routerLink="/studetail"  class="nav-link btn text-dark">{{display()}}</a>
+
+            <li class="nav-item">
+                <a  *ngIf="l.loggedIn()"  (click)="Logout()">Logout</a>  
+            </li>
+        </div>
+    </nav>
+</header>
+
+
+<router-outlet></router-outlet>
+

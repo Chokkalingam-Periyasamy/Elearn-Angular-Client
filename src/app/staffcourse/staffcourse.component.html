@@ -1,0 +1,280 @@
+<br>
+  
+
+<div class="offset-1">
+
+<button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)=" ngOnInit()">Course List</button>
+&nbsp;<button id="b2" type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="postbutton()" >Add course</button>
+
+    
+</div>
+<div id="a">
+   <div *ngIf="flag">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div *ngFor="let item of course">    
+                          
+                        <div class="card" id="c" style="width:270px">
+                        <img class="card-img-top" src="{{item.image}}" alt="Card image" style="width:100%">
+                            <div class="card-body c1">
+    
+    
+                            <b>{{item.coursename}}</b>
+                            <br>
+                            {{item.description}}
+                            <br>
+                            ₹ {{item.amount}}<br>
+                            </div>
+                            <div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-danger" (click)="delete_api(item.courseid)">Delete</button>
+                                &nbsp;<button class="btn btn-danger" (click)="getModbyCId(item.courseid)" >View</button>
+                                &nbsp;<button class="btn btn-danger" (click)="updatebutton(item,item.courseid)">Update</button> 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;<button class="btn btn-danger" (click)=" postModuleBtn(item.courseid)" >Module</button>
+                                
+                             </div>
+                            <br />
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div> 
+</div> 
+
+
+    <!-- <div class="offset-1" *ngIf="flagpost">
+        <h2>Add Course</h2>
+        <form #AddCourseForm="ngForm" (ngSubmit)="post_api(AddCourseForm.value)">
+           <label for="Courseid">Course id</label><br>
+           <input type="number" id="courseid" name="courseid" [(ngModel)]="getcourse.courseid"><br>
+    
+           <label for="Coursename">Course Name</label><br>
+           <input type="text" id="coursename" name="coursename" [(ngModel)]="getcourse.coursename"><br>
+    
+           <label for="Description">Description</label><br>
+           <input type="text" id="description" name="description" [(ngModel)]="getcourse.description"><br>
+    
+           <label for="Image">Image</label><br>
+           <input type="text" id="Image" name="Image" [(ngModel)]="getcourse.image"><br>
+    
+           <label for="Amount">Amount</label><br>
+           <input type="number" id="amount" name="amount" [(ngModel)]="getcourse.amount"><br>
+           <input type="submit" value="submit">
+    
+       </form>
+    </div> -->
+
+
+<div class="row justify-content-center" *ngIf="flagpost">
+    <div class="col-md-8">
+        <h4>Add new Course here !</h4>
+        <form #AddCourseForm="ngForm" (ngSubmit)="post_api(AddCourseForm.value)" autocomplete="off">
+            <!-- <div class="form-group">
+            <label  for="Courseid" class="control-label">Course id</label><br>
+           <input type="number" id="courseid"  class="form-control" name="courseid" [(ngModel)]="getcourse.courseid"><br>
+             
+            </div> -->
+            <div class="form-group">
+                 <label for="Coursename" class="control-label">Course Name</label><br>
+                <input type="text" id="coursename"  class="form-control" name="coursename" [(ngModel)]="getcourse.coursename" #cname="ngModel" required><br>
+                <div class="error" *ngIf="cname.errors?.minlength">Add course name</div>
+                <div class="error"  *ngIf="cname.touched && cname.invalid">Course is required.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="Description" class="control-label">Description</label><br>
+                <input type="text" id="description"  class="form-control" name="description" [(ngModel)]="getcourse.description" #dname="ngModel" required><br>
+                <div class="error" *ngIf="dname.errors?.minlength">Add description</div>
+                <div class="error"  *ngIf="dname.touched && cname.invalid">Description is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="Image" class="control-label">Image</label><br>
+                <input type="text" id="Image"  class="form-control" name="Image" [(ngModel)]="getcourse.image" #Img="ngModel" required><br>
+                <div class="error" *ngIf="Img.errors?.minlength">Enter Image path</div>
+                <div class="error"  *ngIf="Img.touched && Img.invalid">Image is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="Amount" class="control-label">Amount</label><br>
+                <input type="number" id="amount" class="form-control" name="amount" [(ngModel)]="getcourse.amount" #amt="ngModel" required><br>
+                <div class="error" *ngIf="amt.errors?.minlength">Enter Image path</div>
+                <div class="error"  *ngIf="amt.touched && amt.invalid">Image is required.</div>
+            </div> 
+            <div class="form-group">
+                <input type="submit" [disabled]="AddCourseForm.invalid"  value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+<div class="row justify-content-center" *ngIf="flagupdate">
+    <div class="col-md-8">
+        <h4>Update Course here !</h4>
+        <form #CupdateForm="ngForm" (ngSubmit)="put_api(CupdateForm.value,getcourse.courseid)" autocomplete="off">
+            <div class="form-group">
+            <label  for="Courseid" class="control-label">Course id</label><br>
+           <input type="number" id="courseid"  class="form-control" name="courseid" [(ngModel)]="getcourse.courseid"><br>
+             
+            </div>
+            <div class="form-group">
+                 <label for="Coursename" class="control-label">Course Name</label><br>
+                <input type="text" id="coursename"  class="form-control" name="coursename" [(ngModel)]="getcourse.coursename"><br>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Description" class="control-label">Description</label><br>
+                <input type="text" id="description"  class="form-control" name="description" [(ngModel)]="getcourse.description"><br>
+            </div>
+            <div class="form-group">
+                <label for="Image" class="control-label">Image</label><br>
+                <input type="text" id="Image"  class="form-control" name="Image" [(ngModel)]="getcourse.image"><br>
+            </div>
+            <div class="form-group">
+                <label for="Amount" class="control-label">Amount</label><br>
+                <input type="number" id="amount" class="form-control" name="amount" [(ngModel)]="getcourse.amount"><br>
+            </div> 
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+
+        </form>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+
+
+
+    
+
+    <!-- <div class="offset-1" *ngIf="flagupdate">
+            
+        <h2>Update course</h2>
+        <form #CupdateForm="ngForm" (ngSubmit)="put_api(CupdateForm.value,getcourse.courseid)">
+           <label for="Courseid">Course id</label><br>
+           <input type="number" id="courseid" name="courseid" [(ngModel)]="getcourse.courseid"><br>
+    
+           <label for="Coursename">Course Name</label><br>
+           <input type="text" id="coursename" name="coursename" [(ngModel)]="getcourse.coursename"><br>
+    
+           <label for="Description">Description</label><br>
+           <input type="text" id="description" name="description" [(ngModel)]="getcourse.description"><br>
+    
+           <label for="Image">Image</label><br>
+           <input type="text" id="Image" name="Image" [(ngModel)]="getcourse.image"><br>
+    
+           <label for="Amount">Amount</label><br>
+           <input type="number" id="amount" name="amount" [(ngModel)]="getcourse.amount"><br>
+           <input type="submit" value="submit">
+    
+       </form>
+    
+    </div> -->
+    <div class="row justify-content-center" *ngIf="flagModulepost">
+        <div class="col-md-8">
+            <h4>Add Module for this Course here !</h4>
+            <form #AddModuleForm="ngForm" (ngSubmit)="AddModule(AddModuleForm.value,getmodule.courseid)" autocomplete="off">
+                <div class="form-group">
+                    <label for="Courseid" class="control-label">Course id</label><br>
+                    <input type="number" id="courseid" name="courseid" class="form-control"  [(ngModel)]="getmodule.courseid"><br>
+
+                </div>
+    
+                <div class="form-group">
+                    <label for="Modulename" class="control-label">Modulename</label><br>
+                    <input type="text" id="modulename" name="modulename" class="form-control" #mname="ngModel" required  [(ngModel)]="getmodule.modulename"><br>  </div>
+                    <div class="error" *ngIf="mname.errors?.minlength">Add Module name</div>
+                    <div class="error"  *ngIf="mname.touched && mname.invalid">Module name is required.</div>
+                <div class="form-group">
+                    <label for="Video" class="control-label">Video</label><br>
+                    <input type="text" id="video" name="video" class="form-control" #vdo="ngModel" required  [(ngModel)]="getmodule.video"><br>   
+                    <div class="error" *ngIf="vdo.errors?.minlength">Add video path </div>
+                    <div class="error"  *ngIf="vdo.touched && vdo.invalid">Video is required.</div>
+                </div> 
+                <div class="form-group">
+                    <input type="submit" [disabled]="AddModuleForm.invalid"   value="Add" class="btn btn-primary" />
+                </div>
+            </form>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="offset-1" *ngIf="flagModulepost">
+    <h2>Add Module For this course</h2>
+    <form #AddModuleForm="ngForm" (ngSubmit)="AddModule(AddModuleForm.value,getmodule.courseid)">
+       <label for="Courseid">Course id</label><br>
+       <input type="number" id="courseid" name="courseid" [(ngModel)]="getmodule.courseid"><br>
+
+       <label for="Modulename">Modulename</label><br>
+       <input type="text" id="modulename" name="modulename" [(ngModel)]="getmodule.modulename"><br>
+       <label for="Video">Video</label><br>
+       <input type="text" id="video" name="video" [(ngModel)]="getmodule.video"><br>
+       <input type="submit" value="submit">
+     
+   </form>
+    </div> -->
+
+
+    
+<div class="row justify-content-center" *ngIf="flagviewMod">
+
+    <div *ngFor="let item of modarray">
+        <table class="table col-md-8 ">
+            <thead>
+                <tr>
+                    <th>
+                        ModuleId
+                    </th>
+                    <th>
+                       Course Id
+                    </th>
+                    <th>
+                      Modulename
+                    </th>
+                    <th>
+                        video
+                      </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                    <tr>
+                        <td>
+                        {{item.moduleid}}
+                        </td>  
+                        <td>
+                        {{item.courseid}}
+                        </td>
+                        <td>
+                        {{item.modulename}}
+                        </td>
+                        <td>
+                            <iframe src="https://www.youtube.com/embed/vsxYucdzimA" title="description">VV</iframe>
+                            <!-- {{item.video}} -->
+                        </td>
+    
+                    </tr>
+           
+            </tbody>
+        </table>
+    
+    </div>
+</div>
+</div>
+

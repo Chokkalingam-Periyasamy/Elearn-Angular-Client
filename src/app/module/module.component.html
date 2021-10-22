@@ -1,0 +1,67 @@
+
+    <div class="row">
+        <div class="offset-1">
+
+            &nbsp;<button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5"  (click)="get_api()"   >All Modules</button>
+
+                        
+        </div>
+    </div>
+
+<div class="card" *ngFor="let item of module">
+    <!-- <span>ModuleId:</span><span>{{item.moduleid}}</span>
+    <br>
+    <span>courseid:</span>{{item.courseid}}
+    <br>
+    <span>Name:</span>{{item.modulename}}
+    <br>
+    <span>Video:</span>{{item.video}} -->
+    <button type="button" class="btn btn-outline-primary" (click)="getid_api(item.moduleid)">Detail</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ModuleId
+                </th>
+                <th>
+                   Modulename
+                </th>
+                <th>
+                  Video
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+                <tr>
+                    <td>
+                    {{item.moduleid}}
+                    </td>  
+                    <td>
+                    {{item.courseid}}
+                    </td>
+                    <td>
+                    {{item.modulename}}
+                    </td>
+                    <td>
+                        <iframe src="https://www.youtube.com/embed/vsxYucdzimA" title="description">VV</iframe>
+                        {{item.video}}
+                    </td>
+
+                </tr>
+       
+        </tbody>
+    </table>
+
+    </div>
+
+    <div *ngIf="flag">
+        <h3>Student Detail</h3><br>
+        Module:{{user.moduleid}}<br>
+        Course ID:{{user.courseid}}<br>
+        Module Name:{{user.modulename}}<br>
+        Video:{{user.video}}<br>
+
+    </div>

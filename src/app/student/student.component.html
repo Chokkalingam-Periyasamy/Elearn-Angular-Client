@@ -1,0 +1,291 @@
+<!-- <div class="row">
+    <div class="offset-1">
+        
+        &nbsp;<button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="postbutton()">Add Student</button>
+        &nbsp;<button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="back()">Back</button>
+
+    </div>
+</div>
+<br>
+<button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="get_api()">Student List</button>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Userid</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Password</th>
+                
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of student">
+               
+                <td>
+                    {{item.userid}}
+                </td>
+                <td>
+                    {{item.name}}
+                </td>
+                <td>
+                    {{item.age}}
+                </td>
+                <td>
+                    {{item.gender}}
+                </td>
+                <td>
+                    {{item.address}}
+                </td>
+                <td>
+                    {{item.mobile}}
+                </td>
+                <td>
+                    {{item.email}}
+                </td>
+                <td>
+                    {{item.password}}
+                </td>
+                <div style="background-color: black;">
+                <button type="button" class="btn btn-outline-primary" (click)="get_apibyId(item.userid)">Detail</button>
+                &nbsp;<button class="btn btn-danger" (click)="delete_api(item.userid)">Delete</button>
+                &nbsp;<button class="btn btn-danger" (click)="updatebutton(item.userid)">Update</button>
+                </div>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>-->
+<!-- <div *ngIf="flag">
+    <h1>Student Detail</h1><br>
+    Name:{{consumer.name}}<br>
+    Age:{{consumer.age}}<br>
+    Gender:{{consumer.gender}}<br>
+    Addess:{{consumer.address}}<br>
+    Mobile:{{consumer.mobile}}<br>
+    Email:{{consumer.email}}<br>
+    Password:{{consumer.password}}
+</div>  -->
+
+
+<!-- <div class="offset-1" *ngIf="flagpost"> -->
+    <!-- <h1>Add Student</h1>
+    <form #NewStuForm="ngForm" (ngSubmit)="post_api(NewStuForm.value)">
+       <label for="stuid">Student ID</label><br>
+       <input type="number" id="userid" name="userid" [(ngModel)]="consumer.userid"><br>
+
+       <label for="stuname">Student name</label><br>
+       <input type="text" id="name" name="name" [(ngModel)]="consumer.name"><br>
+
+       <label for="stuage">Age</label><br>
+       <input type="text" id="age" name="age" [(ngModel)]="consumer.age"><br>
+
+       <label for="stugender">Gender</label><br>
+       <input type="text" id="gender" name="gender" [(ngModel)]="consumer.gender"><br>
+
+       <label for="Mobile">Mobile</label><br>
+       <input type="text" id="mobile" name="mobile" [(ngModel)]="consumer.mobile"><br>
+
+       <label for="Address">Address</label><br>
+       <input type="text" id="address" name="address" [(ngModel)]="consumer.address"><br>
+       <label for="email">Email</label><br>
+       <input type="text" id="email" name="email" [(ngModel)]="consumer.email"><br>
+       <label for="Password">Password</label><br>
+       <input type="text" id="password" name="password" [(ngModel)]="consumer.password"><br>
+       <input type="submit" value="submit">
+   </form> -->
+
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-4 bg-light ">
+            <h3>Register</h3>
+            <form #NewStuForm="ngForm" (ngSubmit)="post_api(NewStuForm.value)">
+                
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label for="stuname" class="control-label">Student name</label><br>
+                    <input type="text" id="name" name="name" class="form-control" [(ngModel)]="consumer.name"><br>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stuage" class="control-label">Age</label><br>
+                    <input type="text" id="age" name="age" [(ngModel)]="consumer.age" class="form-control"><br>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stugender" class="control-label">Gender</label><br>
+                    <input type="text" id="gender" name="gender" [(ngModel)]="consumer.gender" class="form-control" ><br>
+             
+                </div>
+                
+                <div class="form-group">
+                    <label for="Mobile" class="control-label">Mobile</label><br>
+                    <input type="text" id="mobile" name="mobile" [(ngModel)]="consumer.mobile" class="form-control" ><br>
+             
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label><br>
+                    <input type="text" id="email" name="email" [(ngModel)]="consumer.email" class="form-control" ><br>
+                </div>
+                
+                <div class="form-group" class="control-label">
+                    <input type="text" id="password" name="password" [(ngModel)]="consumer.password" class="form-control" ><br>
+                    <input type="submit" value="submit">
+                </div>
+                
+ 
+                
+
+                <br>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-warning btn-block" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+<section class="vh-500">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/assets/stureg1.jpg"
+                                 alt="login form"
+                                 class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                            <img src="/assets/stureg2.jpg"
+                                 alt="login form"
+                                 class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form #NewStuForm="ngForm" (ngSubmit)="post_api(NewStuForm.value)">
+
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"></span>
+                                    </div>
+
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Student Registration</h5>
+                                    <div class="form-outline mb-4">
+                                        <label for="stuname" class="control-label">Student name</label><br>
+                                        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="consumer.name" #name="ngModel" required>                    
+                                        <div class="error" *ngIf="name.errors?.minlength"></div>
+                                        <div class="error"  *ngIf="name.touched && name.invalid">Name is required.</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline ">
+                                                <label for="stuage" class="control-label">Age</label><br>
+                                                <input type="text" id="age" name="age" [(ngModel)]="consumer.age" pattern="[0-9]+" minlength="2" maxlength="3" class="form-control" #age="ngModel" required><br>
+                                                <div class="error"  *ngIf="age.touched && age.invalid">Enter valid age.</div>
+                                                <div class="error" *ngIf="age.errors?.minlength && age.errors?.pattern">Enter valid age</div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline mb-4">
+                                                <label for="stugender" class="control-label">Gender</label><br>
+                                                <input type="text" id="gender" name="gender" [(ngModel)]="consumer.gender"  class="form-control" #gen="ngModel" required  >
+                                                <div class="error" *ngIf="gen.errors?.minlength"></div>
+                                                <div class="error"  *ngIf="gen.touched && gen.invalid">Gender is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label for="Address" class="control-label">Address</label><br>
+                                        <input type="text" id="address" name="address" [(ngModel)]="consumer.address" class="form-control" #add="ngModel" required ><br>
+                                        <div class="error" *ngIf="add.errors?.minlength"></div>
+                                        <div class="error"  *ngIf="add.touched && add.invalid">Address is required.</div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Mobile" class="control-label">Mobile</label><br>
+                                        <input type="text" id="mobile" name="mobile" [(ngModel)]="consumer.mobile" pattern="[0-9]+" minlength="10" maxlength="10" class="form-control" #mobile="ngModel" required >
+                                        <div class="error" *ngIf="mobile.errors?.minlength && mobile.errors?.pattern ">Check the number</div>
+                                        <div class="error"  *ngIf="mobile.touched && mobile.invalid ">Enter valid mobile number </div>
+                                        
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label for="email" class="control-label">Email</label><br>
+                                        <input type="text" id="email" name="email" [(ngModel)]="consumer.email" class="form-control"   #email="ngModel" required>
+                                        <div class="error" *ngIf="email.errors?.minlength">Email should be in email fomrat</div>
+                                        <div class="error"  *ngIf="email.touched && email.invalid">Email is required.</div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Password">Password</label>
+                                        <input type="text" id="password" name="password" [(ngModel)]="consumer.password" class="form-control" #pass="ngModel" required >
+                                        <div class="error" *ngIf="pass.errors?.minlength"></div>
+                                        <div class="error"  *ngIf="pass.touched && pass.invalid">Pass is required.</div>
+                                    </div>
+                                    <!-- <div class="form-outline mb-4">
+                                        <label asp-for="Image" class="control-label"></label>
+                                        <input asp-for="Image" class="form-control" />
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div> -->
+
+                                    <div class="form-group">
+                                        <input type="submit" [disabled]="NewStuForm.invalid"  value="Register" class="btn btn-dark btn-block" />
+                                    </div>
+                                    <br>
+                                     <a class="btn" style="color: #393f81;" (click)="register()">Login</a>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- </div> -->
+
+<!-- <div class="offset-1" *ngIf="flagupdate">
+    <h1>Add Module</h1>
+    <form #UPStudentForm="ngForm" (ngSubmit)="put_api(UPStudentForm.value,consumer.userid)">
+       <label for="stuid">Student ID</label><br>
+       <input type="number" id="userid" name="userid" [(ngModel)]="consumer.userid"><br>
+
+       <label for="stuname">Student name</label><br>
+       <input type="text" id="name" name="name" [(ngModel)]="consumer.name"><br>
+
+       <label for="stuage">Age</label><br>
+       <input type="text" id="age" name="age" [(ngModel)]="consumer.age"><br>
+
+       <label for="stugender">Gender</label><br>
+       <input type="text" id="gender" name="gender" [(ngModel)]="consumer.gender"><br>
+
+       <label for="Mobile">Mobile</label><br>
+       <input type="text" id="mobile" name="mobile" [(ngModel)]="consumer.mobile"><br>
+
+       <label for="Address">Address</label><br>
+       <input type="text" id="address" name="address" [(ngModel)]="consumer.address"><br>
+       <label for="email">Email</label><br>
+       <input type="text" id="email" name="email" [(ngModel)]="consumer.email"><br>
+       <label for="Password">Password</label><br>
+       <input type="text" id="password" name="password" [(ngModel)]="consumer.password"><br>
+       <input type="submit" value="submit">
+   </form>
+</div> -->

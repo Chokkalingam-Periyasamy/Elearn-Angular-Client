@@ -1,0 +1,65 @@
+    #uif{
+        height: 400px;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block
+        
+    }
+
+    #b2{
+        margin-left: 780px;;
+    }
+    #b3{
+        margin-left: 1170px;;
+    }
+    /* Style the buttons that are used to open and close the accordion panel */
+    .accordion {
+        background-color: #eee;
+        font-size:20px;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: center;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+
+    }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .accordion:hover {
+            background-color: #86C232;
+        }
+
+    /* Style the accordion panel. Note: hidden by default */
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        /* display: none; */
+        /* overflow: hidden; */
+    }
+  
+    .productbox {
+        background-color:lemonchiffon;
+        padding:20px;
+        margin-left:80px ;
+        margin-bottom:10px;
+        margin-top: 30px;
+        -webkit-box-shadow: 0 8px 6px -6px  #999;
+           -moz-box-shadow: 0 8px 6px -6px  #999;
+                box-shadow: 0 8px 6px -6px #999;
+                height: 440px;
+                color:black;
+                
+    }
+
+  #get{
+      font-size: 20px;
+      font-style: bolder;
+  }
+  .error{
+    color: red;
+    font-size: 10px;
+}

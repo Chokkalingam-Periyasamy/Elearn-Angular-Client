@@ -1,0 +1,159 @@
+<!-- <div>
+    <h1>Login</h1><br>
+    <form #LoginForm="ngForm" (ngSubmit)="post_api(LoginForm.value)">
+        <label for="Email">E-mail</label><br>
+        <input type="text" id="email" name="email" [(ngModel)]="user.email"><br>
+        <label for="Password">Password</label><br>
+        <input type="text" id="password" name="password" [(ngModel)]="user.password"><br>
+        <input type="submit" value="submit">
+    </form>
+</div> -->
+<!-- <button type="button" class="btn btn-outline-primary btn-lg mt-5 ml-5" (click)="flagstaff()">Staff Login</button>
+          
+
+    <h1>Staff Login</h1><br>
+    <form #StaffLoginForm="ngForm" (ngSubmit)="post_staff(StaffLoginForm.value)">
+        <label for="Email">E-mail</label><br>
+        <input type="text" id="email" name="email" [(ngModel)]="staff.email"><br>
+        <label for="Password">Password</label><br>
+        <input type="text" id="password" name="password" [(ngModel)]="staff.password"><br>
+        <input type="submit" value="submit">
+    </form>
+</div> -->
+
+
+<style>
+    .cd {
+        margin-bottom: 80px;
+    }
+    .ab{
+        margin-bottom:50px;
+    }
+    #bac{
+        margin-left: 1080px;
+    }
+ 
+</style>
+<br>
+<div  *ngIf="stuflag">
+<section class="vh-100" >
+    <div class="container py-5 h-100 cd">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/assets/stu.jpg"
+                                 alt="login form"
+                                 class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form autocomplete="off" #LoginForm="ngForm" (ngSubmit)="post_api(LoginForm.value)">
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"></span>
+                                    </div>
+                                    <h4>Welcome Student !</h4>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Email" class="control-label">E-mail</label><br>
+                                        <input type="text" id="email" name="email" [(ngModel)]="user.email" class="form-control" #email="ngModel" required>
+                                        <div class="error" *ngIf="email.errors?.minlength">Email should be in email fomrat</div>
+                                        <div class="error"  *ngIf="email.touched && email.invalid">Email is required.</div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Password" class="control-label">Password</label><br>
+                                        <input type="password"  id="password" name="password" [(ngModel)]="user.password" class="form-control" #pass="ngModel" required><br>
+                                        <div class="error" *ngIf="pass.errors?.minlength">Password is required</div>
+                                        <div class="error"  *ngIf="pass.touched && pass.invalid">Password is required</div>
+                                    </div>
+                                 
+                                    <div class="form-group">
+                                        <input type="submit" [disabled]="LoginForm.invalid" value="Login" class="btn btn-dark btn-block" />
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary" (click)="flagstaff()">Staff Login</button>
+
+                                    </div>
+
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
+                                        <a  class="btn" (click)="registerstu()" style="color: #393f81;">Register here</a></p>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</div>
+
+<div *ngIf="staffflag"><section class="vh-100">
+    <div class="container py-5 h-100 ab">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/assets/stud.jpg"
+                                 alt="login form"
+                                 class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form #StaffLoginForm="ngForm" (ngSubmit)="post_staff(StaffLoginForm.value)" autocomplete="off">
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"></span>
+                                    </div>
+                                    <h4>Welcome Tutor !</h4>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Email" class="control-label">E-mail</label><br>
+                                        <input type="text" id="email" name="email" [(ngModel)]="staff.email" class="form-control"  #email="ngModel" required><br>
+                                        <div class="error"  *ngIf="email.touched && email.invalid">Email is required.</div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label for="Password" class="control-label">Password</label><br>
+                                        <input type="password" id="password" name="password" [(ngModel)]="staff.password" class="form-control" #pass="ngModel" required>
+                                        <div class="error"  *ngIf="pass.touched && pass.invalid">Password is required</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" [disabled]="StaffLoginForm.invalid" value="Login" class="btn btn-dark btn-block" />
+                                    </div>
+
+                                    <br>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary" (click)="stu_button()">Student Login</button>
+
+                                    </div>
+                       
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
+                                        <a style="color: #393f81;" class="btn" (click)="registerstaff()">Register here</a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
