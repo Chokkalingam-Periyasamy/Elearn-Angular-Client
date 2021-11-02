@@ -61,7 +61,8 @@ stuflag:boolean=false;
         this.staffflag=false;
         const stu_id=data.userid;
         const stu_name=data.name;
-        localStorage.setItem("stuname",stu_name);
+        localStorage.setItem("name",stu_name);
+        localStorage.setItem("role","student");
         localStorage.setItem("stu_id",stu_id.toString());
         //console.log(stu_id);
         //console.log(stu_name);
@@ -76,18 +77,42 @@ stuflag:boolean=false;
       this.staffflag=false;
       this.stuflag=true;
   }
-  post_staff(login:Staff):void
+  post_staff(slogin:Staff):void
   {
-    if(login.email=="kishore@gmail.com" && login.password=="kishore"){
-    this.obj.Login(login).subscribe(data=>
+    // if(slogin.email=="kishore@gmail.com" && slogin.password=="kishore"){
+    // this.obj.Login(slogin).subscribe(data=>
+    //   {
+    //     console.log(slogin);
+    //     localStorage.setItem("staffname","kishore");
+    //     localStorage.setItem("jwtuser","bala");
+    //     this.router.navigate(['/staffcourse']);
+    //   })
+    //  }
+    {{debugger}}
+
+    this.obj.tokenStaff(slogin).subscribe(data=>
+      { 
+        const usertoken=data;
+        localStorage.setItem("jwtuser",usertoken);
+        console.log(usertoken);
+      }
+    )
+    this.obj.getStaffdetails(slogin).subscribe(
+      data=>
       {
-        console.log(login);
-        localStorage.setItem("staffname","kishore");
-        localStorage.setItem("jwtuser","bala");
+        this.stuflag=false;
+        this.staffflag=true;
+        const staff_id=data.staffid;
+        const staff_name= data.name;
+        localStorage.setItem("name",staff_name);
+        localStorage.setItem("role","staff");
+        localStorage.setItem("staff_id",staff_id.toString());
         this.router.navigate(['/staffcourse']);
-      })
-     }
-  }
+        
+      }
+    )
+   }
+   
   flagstaff():void{
     this.staffflag=true;
     this.stuflag=false;

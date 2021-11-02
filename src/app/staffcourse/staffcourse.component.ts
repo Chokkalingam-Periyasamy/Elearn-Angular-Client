@@ -74,7 +74,7 @@ export class StaffcourseComponent implements OnInit {
       {
         this.msg="Added";
         this.ngOnInit();
-
+        
       });
     
       console.log(this.msg);
@@ -175,6 +175,11 @@ export class StaffcourseComponent implements OnInit {
       {
         
         this.modarray=data;
+
+        if(this.modarray.length==0)
+        {
+          this.router.navigate(['/failure']);
+        }
         console.log(this.modarray);
       })
   }

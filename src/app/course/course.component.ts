@@ -114,10 +114,12 @@ export class CourseComponent implements OnInit {
     this.usercourse.stuid=sid;
     this.obj.Enroll(this.usercourse).subscribe(data=>
       {
-        this.msg="Added"
+        this.msg="Added";
       });
       console.log(this.msg);
-      alert(this.msg)
+      alert("Enrolled successfully");
+      this.mycflag=true;
+      this.router.navigate(['/success']);
   }
   getModbyCId(id:number):void{
     this.flag=false;
@@ -128,6 +130,10 @@ export class CourseComponent implements OnInit {
       {
         this.flagviewMod=true;
         this.stumodarray=data;
+        if(this.stumodarray.length==0)
+        {
+          this.router.navigate(['/failure']);
+        }
         console.log(this.stumodarray);
         
       })

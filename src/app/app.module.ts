@@ -27,9 +27,14 @@ import { StudentdetailComponent } from './studentdetail/studentdetail.component'
 import { Observable } from 'rxjs';
 import { User } from './Models/User';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 
 export function tokenGet() {
   return localStorage.getItem("jwt");
+}
+export function tokenStaffGet() {
+  return localStorage.getItem("jwtstaff");
 }
 @NgModule({
   declarations: [
@@ -42,7 +47,9 @@ export function tokenGet() {
     ModuleComponent,
     HomeComponent,
     StudentdetailComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    SuccessComponent,
+    FailureComponent
     
   ],
   imports: [
@@ -61,6 +68,13 @@ export function tokenGet() {
     HttpClientModule,JwtModule.forRoot({
       config: {
         tokenGetter: tokenGet,
+        allowedDomains: ["*"],
+        disallowedRoutes: []
+      }
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenStaffGet,
         allowedDomains: ["*"],
         disallowedRoutes: []
       }

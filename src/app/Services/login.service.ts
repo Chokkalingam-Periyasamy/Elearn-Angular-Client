@@ -11,7 +11,7 @@ import { User } from '../Models/User';
 })
 export class LoginService {
   req:string="https://localhost:44377/api/Login";
-  req1:string="https://localhost:44319/api/Staff/StaffLogin";
+  req1:string="http://localhost:35400/api/StaffLogin";
   
     constructor(private http:HttpClient,private router: Router) { }
     tokenCustomer(cust:User):Observable<any>
@@ -40,19 +40,46 @@ export class LoginService {
     }
 
 
-    Login(login:Staff):Observable<any>
+    // Login(login:Staff):Observable<any>
+    // {
+    //   return this.http.post(this.req1,login,
+    //     {
+    //       headers: new HttpHeaders({
+    //         'Content-Type':'application/json;charset=UTF-8',
+    //         'Access-Control-Allow-Origin':'*',
+    //         'Access-Control-Allow-Method':'*',    
+    //         'Accept': 'text/html, application/xhtml+xml, */*'
+    //   }),responseType:'text'}
+    //   )
+    // }
+    tokenStaff(suser:Staff):Observable<any>
     {
-      return this.http.post(this.req1,login,
-        {
-          headers: new HttpHeaders({
+      return this.http.post(this.req1,suser,
+      {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Method':'*',    
+          'Accept': 'text/html, application/xhtml+xml, /'
+    }),responseType:'text'}
+      )
+    }
+    getStaffdetails(suser:Staff):Observable<Staff>
+    {
+      return this.http.post<Staff>("http://localhost:35400/api/StaffLogin/UserDetail",suser,
+      {
+        headers:new HttpHeaders(
+          {
             'Content-Type':'application/json;charset=UTF-8',
             'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Method':'*',    
-            'Accept': 'text/html, application/xhtml+xml, */*'
-      }),responseType:'text'}
-      )}
+            'Access-Control-Allow-Method':'*'
+          })
+      })
+    }
       loggedIn(){
+        
         return !!localStorage.getItem('jwtuser');
+        
       }
       loggedUser(){
         localStorage.removeItem('jwtuser');

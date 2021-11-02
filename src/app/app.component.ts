@@ -26,12 +26,12 @@ export class AppComponent {
   flag=false;
   constructor(private obj:StudentService,public l:LoginService,private router: Router ,private jwtHelper:JwtHelperService ) { }
   display(){
-    if(localStorage.getItem("jwtuser")=="bala")
+    if(localStorage.getItem("jwtuser"))
     {
-      return localStorage.getItem("staffname");
+      return localStorage.getItem("name");
     }
     else{
-    return localStorage.getItem("stuname");
+    return localStorage.getItem("name");
   }
   }
   get_apibyId(id:number):void{
@@ -59,7 +59,12 @@ export class AppComponent {
     // localStorage.removeItem("stuname");
   }
   course(){
+    if(localStorage.getItem("role")=="student"){
     this.router.navigate(['/course']);
+  }
+  else{
+    this.router.navigate(['/staffcourse']);
+  }
   }
 
   
